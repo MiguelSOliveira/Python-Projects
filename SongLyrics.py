@@ -13,15 +13,13 @@ if __name__ == '__main__':
     songName = raw_input()
 
     if songName == '*':
-        link = 'http://www.songlyrics.com/' + artist + '/*/'
+        link = 'http://www.songlyrics.com/' + artist + '-lyrics/'
         url = urllib.urlopen(link)
         artist = artist.replace('-', ' ')
         artist = artist.split()
         artistName = []
-
         for word in artist:
             artistName.append(word[:1].capitalize() + word[1:])
-
         artist = None
         for line in url.readlines():
             # check the last tag b4 the name of the songs
