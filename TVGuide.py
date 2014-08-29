@@ -18,11 +18,7 @@ if __name__ == '__main__':
     regex2 = '<p>(\d.+?\d)</p>'
     showPattern = re.compile(regex)
     timePattern = re.compile(regex2)
-    showInfo = {}
     showName = re.findall(showPattern, htmlText)
     showTime = re.findall(timePattern, htmlText)
     for name, time in zip(showName, showTime):
-        showInfo[time.replace('&rarr;', '')] = name
-
-    for item in sorted(showInfo):
-        print item + ' \t' + showInfo[item]
+        print time.replace('&rarr;', '') + '\t' + name
