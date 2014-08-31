@@ -35,6 +35,15 @@ class Account(object):
 		else:
 			print 'Wrong pin code. Try again.'
 
+	def createMBNet(self, value):
+		import random
+		self.MBalance = value
+		print 'You have Successfully created an MBNet card with ' + str(self.MBalance) + ' euros.'
+		card_ID = [random.randint(0, 9) for _ in xrange(23)]
+		print 'Your card id is ' + "".join(str(id) for id in card_ID)
+		card_secret = [random.randint(0, 9) for _ in xrange(4)]
+		print 'Your secret code is ' + "".join(str(secret) for secret in card_secret)
+
 
 class CheckingAccount(Account):
 	def __init__(self):
@@ -68,6 +77,5 @@ if checksAcc.checkCode(int(pin)):
 checksAcc.checkTransactions()
 checksAcc.checkBalance()
 myAcc = SavingsAccount()
-myAcc.checkBalance()
 hisAcc = BusinessAccount()
-hisAcc.checkBalance()
+checksAcc.createMBNet(500)
