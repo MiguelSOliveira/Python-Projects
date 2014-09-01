@@ -13,7 +13,7 @@ class Account(object):
 	def checkTransactions(self):
 		print 'Previous transactions:'
 		for item in sorted(history):
-			print item + ' \t\t' + str(history[item]) + ' euros.'
+			print item + '\t\t' + str(history[item]) + ' euros.'
 
 	def withdraw(self, pin, value):
 		if self.checkCode(pin):
@@ -43,6 +43,13 @@ class Account(object):
 		print 'Your card id is ' + "".join(str(id) for id in card_ID)
 		card_secret = [random.randint(0, 9) for _ in xrange(4)]
 		print 'Your secret code is ' + "".join(str(secret) for secret in card_secret)
+
+	def changePIN(self, oldvalue, newvalue):
+		if self.checkCode(oldvalue):
+			self.pin = newvalue
+			print 'Pin code has been successfully changed.'
+		else:
+			print 'Wrong pin code. Try again.'
 
 
 class CheckingAccount(Account):
@@ -79,3 +86,4 @@ checksAcc.checkBalance()
 myAcc = SavingsAccount()
 hisAcc = BusinessAccount()
 checksAcc.createMBNet(500)
+checksAcc.changePIN(1234, 5678)
